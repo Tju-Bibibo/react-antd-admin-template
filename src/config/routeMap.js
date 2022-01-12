@@ -24,6 +24,7 @@ const Error404 = Loadable({loader: () => import(/*webpackChunkName:'Error404'*/'
 const User = Loadable({loader: () => import(/*webpackChunkName:'User'*/'@/views/user'),loading: Loading});
 const About = Loadable({loader: () => import(/*webpackChunkName:'About'*/'@/views/about'),loading: Loading});
 const Bug = Loadable({loader: () => import(/*webpackChunkName:'Bug'*/'@/views/bug'),loading: Loading});
+const ExamTable = Loadable({loader: () => import(/*webpackChunkName:'ExamTable'*/'@/views/exam_table'),loading: Loading});
 
 export default [
   { path: "/dashboard", component: Dashboard, roles: ["admin","editor","guest"] },
@@ -50,4 +51,5 @@ export default [
   { path: "/about", component: About, roles: ["admin", "editor", "guest"] },
   { path: "/bug", component: Bug, roles: ["admin"] },
   { path: "/error/404", component: Error404 },
+  { path: "/exam_table", component: ExamTable, roles: ["admin","editor"] },
 ];

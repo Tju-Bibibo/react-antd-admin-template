@@ -3,6 +3,7 @@ import loginAPI from "./login";
 import remoteSearchAPI from "./remoteSearch";
 import excelAPI from "./excel";
 import tableAPI from "./table";
+import examTableAPI from "./exam_table"
 import monitor from "./monitor";
 
 // 登录与用户相关
@@ -26,6 +27,12 @@ Mock.mock(/\/excel\/list/, "get", excelAPI.excelList);
 Mock.mock(/\/table\/list/, "post", tableAPI.tableList);
 Mock.mock(/\/table\/delete/, "post", tableAPI.deleteItem);
 Mock.mock(/\/table\/edit/, "post", tableAPI.editItem);
+
+// exam_table
+Mock.mock(/\/exam_table\/list/, "post", examTableAPI.tableList);
+Mock.mock(/\/exam_table\/delete/, "post", examTableAPI.deleteItem);
+Mock.mock(/\/exam_table\/edit/, "post", examTableAPI.editItem);
+Mock.mock(/\/exam_table\/new/, "post", examTableAPI.newItem);
 
 // monitor
 Mock.mock(/\/monitor/, "post", monitor.monitor);

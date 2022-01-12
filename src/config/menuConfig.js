@@ -131,6 +131,12 @@ const menuList = [
     roles:["admin","editor"]
   },
   {
+    title: "成绩表格",
+    path: "/exam_table",
+    icon: "table",
+    roles:["admin","editor"]
+  },
+  {
     title: "Excel",
     path: "/excel",
     icon: "file-excel",
