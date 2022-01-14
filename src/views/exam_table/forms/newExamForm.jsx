@@ -23,7 +23,7 @@ class NewExamForm extends Component {
       onOk,
       form,
       confirmLoading,
-      currentRowData,
+      //currentRowData,
     } = this.props;
     const { getFieldDecorator } = form;
     const formItemLayout = {
@@ -103,6 +103,7 @@ class NewExamForm extends Component {
           </Form.Item>
           <Form.Item label="年级列表:">
             {getFieldDecorator("grade_list", {
+              rules: [{ required: true, message: "请选择年级列表!" }],
               //initialValue: gradeChList,
             })(
               <Select

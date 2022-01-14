@@ -67,4 +67,9 @@ export default {
       code: 20000,
     };
   },
+  uploadScore: (config) => {
+    return {
+      code: 20000,
+    };
+  },
 };

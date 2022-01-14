@@ -131,8 +131,14 @@ const menuList = [
     roles:["admin","editor"]
   },
   {
-    title: "成绩表格",
+    title: "考试管理",
     path: "/exam_table",
+    icon: "table",
+    roles:["admin","editor"]
+  },
+  {
+    title: "分数管理",
+    path: "/score_table",
     icon: "table",
     roles:["admin","editor"]
   },

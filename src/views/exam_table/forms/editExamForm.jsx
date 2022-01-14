@@ -102,6 +102,7 @@ class EditExamForm extends Component {
           </Form.Item>
           <Form.Item label="年级列表:">
             {getFieldDecorator("grade_list", {
+              rules: [{ required: true, message: "请选择年级列表!" }],
               initialValue: gradeChList,
             })(
               <Select
@@ -110,7 +111,7 @@ class EditExamForm extends Component {
               style={{ width: '100%' }}
               placeholder="请选择年级列表"
               // defaultValue={gradeChList}d
-              onChange={handleChange}
+              // onChange={handleChange}
               >
               {gradeList}
             </Select>

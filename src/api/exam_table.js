@@ -28,3 +28,11 @@ export function newItem(data) {
     data
   })
 }
+
+export function uploadScore(data) {
+  return request({
+    url: '/exam_table/upload',
+    method: 'post',
+    data
+  })
+}
