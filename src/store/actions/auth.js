@@ -3,11 +3,12 @@ import { reqLogin, reqLogout } from "@/api/login";
 import { setToken, removeToken } from "@/utils/auth";
 export const login = (username, password) => (dispatch) => {
   return new Promise((resolve, reject) => {
-    reqLogin({ username: username.trim(), password: password })
+    reqLogin({ user_id: username.trim(), password: password })
       .then((response) => {
         const { data } = response;
-        if (data.status === 0) {
-          const token = data.token;
+        console.log(data)
+        if (data.code === 0) {
+          const token = data.data;
           dispatch(setUserToken(token));
           setToken(token);
           resolve(data);

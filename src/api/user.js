@@ -1,10 +1,12 @@
 import request from '@/utils/request'
 
 export function reqUserInfo(data) {
+  console.log("...");
+  console.log(data);
   return request({
-    url: '/userInfo',
-    method: 'post',
-    data
+    url: '/jiaYinAdmin/auth/getUserInfo',
+    method: 'get',
+    //Cookies:data,
   })
 }
 

@@ -7,6 +7,7 @@ import Login from "@/views/login";
 class Router extends React.Component {
   render() {
     const { token, role, getUserInfo } = this.props;
+    console.log(this.props);
     return (
       <HashRouter>
         <Switch>
@@ -15,7 +16,7 @@ class Router extends React.Component {
             path="/"
             render={() => {
               if (!token) {
-                return <Redirect to="/login" />;
+                return <Redirect to="/login"/>;
               } else {
                 if (role) {
                   return <Layout />;
