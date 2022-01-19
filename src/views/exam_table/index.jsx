@@ -20,19 +20,10 @@ import NewExamForm from "./forms/newExamForm";
 import UploadScoreForm from "./forms/uploadScoreForm";
 import { Link, Router } from "react-router-dom";
 import { logRoles } from "@testing-library/react";
+import { gradeMap} from "@/utils/global";
 const { Column } = Table;
 const { Panel } = Collapse
 const { RangePicker } = DatePicker;
-var gradeMap = new Map([
-  [6,"六年级"],
-  [7,"七年级"],
-  [8,"八年级"],
-  [9,"九年级"],
-  [56,"五升六"],
-  [67,"六升七"],
-  [78,"七升八"],
-  [89,"八升九"],
-]);
 class TableComponent extends Component {
   _isMounted = false; // 这个变量是用来标志当前组件是否挂载
   state = {
@@ -65,9 +56,11 @@ class TableComponent extends Component {
   
   fetchData = () => {
     this.setState({ loading: true });
+    console.log(this.state.listQuery);
     tableList(this.state.listQuery).then((response) => {
       this.setState({ loading: false });
-      const list = response.data.data.items;
+      console.log(response.data);
+      const list = response.data.data.data;
       const total = response.data.data.total;
       if (this._isMounted) {
         this.setState({ list, total });
@@ -230,19 +223,18 @@ class TableComponent extends Component {
       if (err) {
         return;
       }
-      const values = {
-        ...fieldsValue,
-        // 'star': "".padStart(fieldsValue['star'], '★'),
-        // 'exam_date': fieldsValue['exam_date'].format('YYYY-MM-DD'),
-        // 'grade_list':fieldsValue['grade_list'].join(",")
-      };
-      console.log(values)
+      let formdata = new FormData()
+      formdata.append('file', fileList[0])
+      formdata.append('exam_id',fieldsValue['exam_id'])
+      formdata.append('grade_id',fieldsValue['grade_list'])
+      
+      console.log(formdata)
       this.setState({ scoreUploadModalLoading: true, });
-      uploadScore(values).then((response) => {
+      uploadScore(formdata).then((response) => {
         form.resetFields();
         this.setState({ scoreUploadModalVisible: false, scoreUploadModalLoading: false });
         message.success("上传成功!")
-        this.fetchData()
+        // this.fetchData()
       }).catch(e => {
         message.success("上传失败,请重试!")
       })

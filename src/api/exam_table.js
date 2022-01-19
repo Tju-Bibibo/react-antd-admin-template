@@ -1,29 +1,29 @@
 import request from '@/utils/request'
 export function tableList(data) {
   return request({
-    url: '/exam_table/list',
-    method: 'post',
-    data
+    url: '/jiaYinAdmin/exam/getExamList',
+    method: 'get',
+    params:data,
   })
 }
 
 export function deleteItem(data) {
   return request({
-    url: '/exam_table/delete',
+    url: '/jiaYinAdmin/exam/deleteExam',
     method: 'post',
     data
   })
 }
 export function editItem(data) {
   return request({
-    url: '/exam_table/edit',
+    url: '/jiaYinAdmin/exam/updateExam',
     method: 'post',
     data
   })
 }
 export function newItem(data) {
   return request({
-    url: '/exam_table/new',
+    url: '/jiaYinAdmin/exam/createExam',
     method: 'post',
     data
   })
@@ -31,7 +31,8 @@ export function newItem(data) {
 
 export function uploadScore(data) {
   return request({
-    url: '/exam_table/upload',
+    url: '/jiaYinAdmin/score/uploadScore',
+    //headers:{'Content-Type':'multipart/form-data;charset=UTF-8'},
     method: 'post',
     data
   })

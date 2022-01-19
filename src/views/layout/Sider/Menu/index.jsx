@@ -26,12 +26,13 @@ class Meun extends Component {
   // filterMenuItem用来根据配置信息筛选可以显示的菜单项
   filterMenuItem = (item) => {
     const { roles } = item;
-    const { role } = this.props;
-    if (role === "admin" || !roles || roles.includes(role)) {
+    const { user_type } = this.props;
+    console.log(user_type);
+    if (user_type === "admin" || !roles || roles.includes(user_type)) {
       return true;
     } else if (item.children) {
       // 如果当前用户有此item的某个子item的权限
-      return !!item.children.find((child) => roles.includes(child.role));
+      return !!item.children.find((child) => roles.includes(child.user_type));
     }
     return false;
   };

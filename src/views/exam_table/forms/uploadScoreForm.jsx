@@ -3,19 +3,10 @@ import { Form, Input, DatePicker, Select, Rate, Modal,Radio ,Upload,message,Butt
 import moment from "moment";
 import "moment/locale/zh-cn";
 import UploadExcelComponent from "@/components/UploadExcel";
+import { gradeMap} from "@/utils/global";
 moment.locale("zh-cn");
 const { Option } = Select;
 
-var gradeMap = new Map([
-  [6,"六年级"],
-  [7,"七年级"],
-  [8,"八年级"],
-  [9,"九年级"],
-  [56,"五升六"],
-  [67,"六升七"],
-  [78,"七升八"],
-  [89,"八升九"],
-]);
 class UploadScoreForm extends Component {
   state = {
     fileList: [],

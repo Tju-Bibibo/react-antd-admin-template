@@ -15,21 +15,22 @@ import {
   Icon
 } from "antd";
 import { tableList} from "@/api/score_table";
+import { gradeMap} from "@/utils/global";
 
 const {Option} = Select;
 const { Column } = Table;
 const { Panel } = Collapse;
 const { RangePicker } = DatePicker;
-var gradeMap = new Map([
-  [6,"六年级"],
-  [7,"七年级"],
-  [8,"八年级"],
-  [9,"九年级"],
-  [56,"五升六"],
-  [67,"六升七"],
-  [78,"七升八"],
-  [89,"八升九"],
-]);
+// var gradeMap = new Map([
+//   [6,"六年级"],
+//   [7,"七年级"],
+//   [8,"八年级"],
+//   [9,"九年级"],
+//   [56,"五升六"],
+//   [67,"六升七"],
+//   [78,"七升八"],
+//   [89,"八升九"],
+// ]);
 const gradeList = [];
 for (let [i,j] of gradeMap.entries()) {
   gradeList.push(<Option value={i} >{j}</Option>);
@@ -51,10 +52,10 @@ class TableComponent extends Component {
       id: 0,
       exam_id:0,
       exam_name:"",
-      grd_name:"",
-      cls_name:0,
-      stu_name:"",
-      stu_code:0,
+      grd_id:0,
+      cls_id:0,
+      std_name:"",
+      std_code:0,
       s_yuwen:0,
       s_shuxue:0,
       s_yingyu:0,
@@ -66,7 +67,7 @@ class TableComponent extends Component {
       s_dili:0,
       s_kexue:0,
       s_shehui:0,
-      extra:"",
+      score_desc:"",
     }
   };
   fetchData = () => {
@@ -74,7 +75,7 @@ class TableComponent extends Component {
     console.log(this.state.listQuery);
     tableList(this.state.listQuery).then((response) => {
       this.setState({ loading: false });
-      const list = response.data.data.items;
+      const list = response.data.data.data;
       const total = response.data.data.total;
       if (this._isMounted) {
         this.setState({ list, total });
@@ -202,13 +203,16 @@ class TableComponent extends Component {
           scroll={{ x: true }}
         >
           <Column title="序号" dataIndex="id" key="id" width={100} align="center" sorter={(a, b) => a.id - b.id}/>
-          <Column title="学生身份证号" dataIndex="stu_code" key="stu_code" width={200} align="center"/>
-          <Column title="学生名称" dataIndex="stu_name" key="stu_name" width={100} align="center"/>
+          <Column title="学生身份证号" dataIndex="std_code" key="std_code" width={200} align="center"/>
+          <Column title="学生名称" dataIndex="std_name" key="std_name" width={100} align="center"/>
           <Column title="考试id" dataIndex="exam_id" key="exam_id" width={100} align="center"/>
           <Column title="考试名称" dataIndex="exam_name" key="exam_name" width={200} align="center"/>
 
-          <Column title="年级" dataIndex="grd_name" key="grd_name" width={100} align="center"/>
-          <Column title="班级" dataIndex="cls_name" key="cls_name" width={100} align="center"/>
+          <Column title="年级" dataIndex="grd_id" key="grd_id" width={100} align="center" render={(grade_id) =>{
+                    return gradeMap.get(Number(grade_id))
+          }}/>
+
+          <Column title="班级" dataIndex="cls_id" key="cls_id" width={100} align="center"/>
           <Column title="语文" dataIndex="s_yuwen" key="s_yuwen" width={100} align="center"/>
           <Column title="数学" dataIndex="s_shuxue" key="s_shuxue" width={100} align="center"/>
           <Column title="英语" dataIndex="s_yingyu" key="s_yingyu" width={100} align="center"/>
@@ -219,7 +223,7 @@ class TableComponent extends Component {
           <Column title="历史" dataIndex="s_lishi" key="s_lishi" width={100} align="center"/>
           <Column title="科学" dataIndex="s_kexue" key="s_kexue" width={100} align="center"/>
           <Column title="社会" dataIndex="s_shehui" key="s_shehui" width={100} align="center"/>
-          <Column title="备注" dataIndex="extra" key="extra" width={300} align="center"/>
+          <Column title="备注" dataIndex="score_desc" key="score_desc" width={300} align="center"/>
           {/* <Column title="操作" key="action" width={195} align="center"render={(text, row) => (
             <span>
               <Button type="primary" shape="circle" icon="eye" title="查看分数" onClick={this.handleUploadScore.bind(null,row)}/>

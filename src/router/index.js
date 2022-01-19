@@ -6,7 +6,7 @@ import Layout from "@/views/layout";
 import Login from "@/views/login";
 class Router extends React.Component {
   render() {
-    const { token, role, getUserInfo } = this.props;
+    const { token, user_type, getUserInfo } = this.props;
     console.log(this.props);
     return (
       <HashRouter>
@@ -18,7 +18,7 @@ class Router extends React.Component {
               if (!token) {
                 return <Redirect to="/login"/>;
               } else {
-                if (role) {
+                if (user_type) {
                   return <Layout />;
                 } else {
                   getUserInfo(token).then(() => <Layout />);

@@ -8,7 +8,7 @@ export const getUserInfo = (token) => (dispatch) => {
         const { data } = response;
         console.log(data);
         if (data.code === 0) {
-          const userInfo = data.userInfo;
+          const userInfo = data.data;
           dispatch(setUserInfo(userInfo));
           resolve(data);
         } else {

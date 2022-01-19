@@ -6,7 +6,7 @@ import LineChart from "./components/LineChart";
 import BarChart from "./components/BarChart";
 import RaddarChart from "./components/RaddarChart";
 import PieChart from "./components/PieChart";
-import TransactionTable from "./components/TransactionTable";
+// import TransactionTable from "./components/TransactionTable";
 import BoxCard from "./components/BoxCard";
 
 const lineChartDefaultData = {
@@ -82,7 +82,7 @@ const Dashboard = () => {
           xl={12}
           style={{ paddingRight: "8px", marginBottom: "30px" }}
         >
-          <TransactionTable />
+          {/* <TransactionTable /> */}
         </Col>
         <Col
           xs={24}

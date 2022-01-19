@@ -6,7 +6,8 @@ export function reqUserInfo(data) {
   return request({
     url: '/jiaYinAdmin/auth/getUserInfo',
     method: 'get',
-    //Cookies:data,
+    withCredentials:true,
+    //Cookie:data,
   })
 }
 
