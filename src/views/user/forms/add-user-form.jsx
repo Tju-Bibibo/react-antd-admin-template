@@ -49,7 +49,7 @@ class AddUserForm extends Component {
             })(<Input placeholder="请输入用户名称" />)}
           </Form.Item>
           <Form.Item label="用户角色:">
-            {getFieldDecorator("role", {
+            {getFieldDecorator("user_type", {
               initialValue: "admin",
             })(
               <Select style={{ width: 120 }}>

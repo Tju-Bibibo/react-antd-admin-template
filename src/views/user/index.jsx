@@ -108,9 +108,9 @@ class User extends Component {
         <br/>
         <Card title={title}>
           <Table bordered rowKey="id" dataSource={users} pagination={false}>
-            <Column title="用户ID" dataIndex="id" key="id" align="center"/>
-            <Column title="用户名称" dataIndex="name" key="name" align="center"/>
-            <Column title="用户角色" dataIndex="role" key="role" align="center"/>
+            <Column title="用户ID" dataIndex="user_id" key="user_id" align="center"/>
+            <Column title="用户名称" dataIndex="user_name" key="user_name" align="center"/>
+            <Column title="用户角色" dataIndex="user_type" key="user_type" align="center"/>
             <Column title="用户描述" dataIndex="description" key="description" align="center" />
             <Column title="操作" key="action" width={195} align="center"render={(text, row) => (
               <span>

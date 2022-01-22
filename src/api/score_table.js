@@ -3,7 +3,6 @@ export function tableList(data) {
   return request({
     url: '/jiaYinAdmin/score/getScoreList',
     method: 'get',
-    headers:{'Content-Type':'multipart/form-data;charset=UTF-8'},
     params:data
   })
 }

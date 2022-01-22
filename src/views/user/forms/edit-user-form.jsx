@@ -12,7 +12,7 @@ class EditUserForm extends Component {
       currentRowData,
     } = this.props;
     const { getFieldDecorator } = form;
-    const { id, name, role, description } = currentRowData;
+    const { user_id, user_name, user_type, description } = currentRowData;
     const formItemLayout = {
       labelCol: {
         sm: { span: 4 },
@@ -42,8 +42,8 @@ class EditUserForm extends Component {
             })(<Input placeholder="请输入用户名称" />)}
           </Form.Item>
           <Form.Item label="用户角色:">
-            {getFieldDecorator("role", {
-              initialValue: role,
+            {getFieldDecorator("user_type", {
+              initialValue: user_type,
             })(
               <Select style={{ width: 120 }} disabled={id === "admin"}>
                 <Select.Option value="admin">admin</Select.Option>
